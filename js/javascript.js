@@ -1,21 +1,56 @@
-let selectedPlay;
+let computerValue;
+let playerValue;
+let playerSelection;
+const MOVES = ['rock', 'paper', 'scissors'];
 
-function computerPlay() {
-  let randomPlay = Math.floor(Math.random() * 3) + 1;
-  switch (randomPlay) {
-    case 1:
-      selectedPlay = `Rock`;
-      break;
-    case 2:
-      selectedPlay = `Paper`;
-      break;
-    case 3:
-      selectedPlay = `Scissors`;
-      break;
-    default:
-      selectedPlay = `Houston, we have a problem.`;
+game();
+
+function game() {
+  for (let i = 0; i < 5; i++) {
+    playerSelection = prompt(
+      "What's your play? Type in rock / paper / scissors"
+    );
+
+    let playerScore,
+      computerScore = 0;
+
+    if (!inputValidation(playerSelection)) {
+      alert('Please enter rock / paper / scissors');
+      console.log(i);
+      console.log(playerSelection);
+      i--;
+    } else {
+      playerValue = MOVES.indexOf(playerSelection);
+      computerPlay();
+      console.log(playRound(playerValue, computerValue));
+    }
   }
-  return selectedPlay;
+}
+function playRound(playerValue, computerValue) {
+  if ((playerValue + 1) % 3 === computerValue) {
+    return `You Lose, ${MOVES[computerValue]} > ${MOVES[playerValue]}!`;
+  } else if (playerValue === computerValue) {
+    return `It's a Tie - ${MOVES[playerValue]} vs ${MOVES[computerValue]}`;
+  } else {
+    return `You win, ${MOVES[playerValue]} > ${MOVES[computerValue]}`;
+  }
 }
 
-console.log(computerPlay());
+function inputValidation(string) {
+  if (
+    string === null ||
+    !(
+      string.toLowerCase() === 'rock' ||
+      string.toLowerCase() === 'paper' ||
+      string.toLowerCase() === 'scissors'
+    )
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function computerPlay() {
+  computerValue = Math.floor(Math.random() * 3);
+}
