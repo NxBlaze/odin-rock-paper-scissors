@@ -1,6 +1,6 @@
-let computerValue;
-let playerValue;
 let playerSelection;
+let computerScore = 0;
+let playerScore = 0;
 const MOVES = ['rock', 'paper', 'scissors'];
 
 game();
@@ -11,29 +11,15 @@ function game() {
       "What's your play? Type in rock / paper / scissors"
     );
 
-    let playerScore,
-      computerScore = 0;
-
     if (!inputValidation(playerSelection)) {
-      alert('Please enter rock / paper / scissors');
-      console.log(i);
-      console.log(playerSelection);
+      // Repeat the round if player's input is invalid
       i--;
     } else {
-      playerValue = MOVES.indexOf(playerSelection);
-      computerPlay();
-      console.log(playRound(playerValue, computerValue));
+      console.log(playRound(playerSelection, computerPlay()));
     }
   }
-}
-function playRound(playerValue, computerValue) {
-  if ((playerValue + 1) % 3 === computerValue) {
-    return `You Lose, ${MOVES[computerValue]} > ${MOVES[playerValue]}!`;
-  } else if (playerValue === computerValue) {
-    return `It's a Tie - ${MOVES[playerValue]} vs ${MOVES[computerValue]}`;
-  } else {
-    return `You win, ${MOVES[playerValue]} > ${MOVES[computerValue]}`;
-  }
+
+  printWinner();
 }
 
 function inputValidation(string) {
@@ -45,6 +31,7 @@ function inputValidation(string) {
       string.toLowerCase() === 'scissors'
     )
   ) {
+    alert('Please enter rock / paper / scissors');
     return false;
   } else {
     return true;
@@ -52,5 +39,31 @@ function inputValidation(string) {
 }
 
 function computerPlay() {
-  computerValue = Math.floor(Math.random() * 3);
+  return Math.floor(Math.random() * 3);
+}
+
+// Determine the round winner using modulo function,
+// more info in README.md
+function playRound(playerSelection, computerValue) {
+  let playerValue = MOVES.indexOf(playerSelection.toLowerCase());
+
+  if ((playerValue + 1) % 3 === computerValue) {
+    computerScore++;
+    return `You Lose, ${MOVES[computerValue]} > ${MOVES[playerValue]}!`;
+  } else if (playerValue === computerValue) {
+    return `It's a Tie - ${MOVES[playerValue]} vs ${MOVES[computerValue]}`;
+  } else {
+    playerScore++;
+    return `You win, ${MOVES[playerValue]} > ${MOVES[computerValue]}`;
+  }
+}
+
+function printWinner() {
+  if (playerScore > computerScore) {
+    console.log(`You won, scoring ${playerScore} to ${computerScore}!`);
+  } else if (playerScore < computerScore) {
+    console.log(`Computer won, scoring ${computerScore} to ${playerScore}!`);
+  } else {
+    console.log(`It's a tie! ${computerScore} to ${playerScore}!`);
+  }
 }
