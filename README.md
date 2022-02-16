@@ -4,7 +4,7 @@ First JS project of TOP - a simple Rock, Paper, Scissors game in the console.
 
 ## Project Goals
 
-Although it's a very straightforward project, I still wanted use it as an opportunity to push a little beyond what I've learned so far.
+Although it's a very straightforward project, I still wanted use it as an opportunity for learing and push a little beyond my current skill level.
 
 ### Determining Winner
 
@@ -23,7 +23,7 @@ Luckily, a quick google search provided an elegant solution. We can map the shap
     Paper -> 1
     Scissors -> 2
 
-Ok, 1 beating 0 and 2 beating 1 is straight enough, but 0 beating 2 seems kinda counter-intuitive. This is where modulo function comes in. Exact formula, in pseudocode is:
+Ok, 1 beating 0 and 2 beating 1 is straightforward enough, but 0 beating 2 seems counter-intuitive. This is where modulo function comes in. Exact formula, in pseudocode is:
 
     if ((playerSelection + 1) % 3 === computerSelection)
         computer wins
@@ -72,7 +72,7 @@ But then I figured that to display the result in text, I'd need another switch f
         ...
     }
 
-Instead, I created an array which both players could access to convert text to its corresponding number and back, which I think is much neater solution:
+Instead, I created an array which both players could access to convert text to its corresponding number and vice versa, which I think is much neater solution:
 
     const MOVES = ["rock", "paper", "scissors"];
 
