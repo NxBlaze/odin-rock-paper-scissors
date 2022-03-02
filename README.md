@@ -1,6 +1,7 @@
 # Project Odin - Rock, Paper, Scissors
 
 First JS project of TOP - a simple Rock, Paper, Scissors game in the console.
+This branch serves as archive for the initial, console-only version.
 
 ## Project Goals
 
