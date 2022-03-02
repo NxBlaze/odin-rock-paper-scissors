@@ -1,69 +1,78 @@
-let playerSelection;
+let playerChoice;
 let computerScore = 0;
 let playerScore = 0;
-const MOVES = ['rock', 'paper', 'scissors'];
 
-game();
+const rpsMoves = document.getElementById('moves');
+const movesArray = Array.from(rpsMoves.children);
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playerSelection = prompt(
-      "What's your play? Type in rock / paper / scissors"
-    );
+rpsMoves.addEventListener('click', (e) => {
+  if (e.target.closest('BUTTON')) playerSelection(e.target.closest('BUTTON'));
+});
 
-    if (!inputValidation(playerSelection)) {
-      // Repeat the round if player's input is invalid
-      i--;
-    } else {
-      console.log(playRound(playerSelection, computerPlay()));
-    }
-  }
-
-  printWinner();
+function playerSelection(rpsButton) {
+  playerChoice = movesArray.indexOf(rpsButton);
 }
 
-function inputValidation(string) {
-  if (
-    string === null ||
-    !(
-      string.toLowerCase() === 'rock' ||
-      string.toLowerCase() === 'paper' ||
-      string.toLowerCase() === 'scissors'
-    )
-  ) {
-    alert('Please enter rock / paper / scissors');
-    return false;
-  } else {
-    return true;
-  }
+function computerSelection() {
+  return Math.floor(Math.random() * 5);
 }
+// game();
 
-function computerPlay() {
-  return Math.floor(Math.random() * 3);
-}
+// function game() {
+//   for (let i = 0; i < 5; i++) {
+//     playerSelection = prompt(
+//       "What's your play? Type in rock / paper / scissors"
+//     );
 
-// Determine the round winner using modulo function,
-// more info in README.md
-function playRound(playerSelection, computerValue) {
-  let playerValue = MOVES.indexOf(playerSelection.toLowerCase());
+//     if (!inputValidation(playerSelection)) {
+//       // Repeat the round if player's input is invalid
+//       i--;
+//     } else {
+//       console.log(playRound(playerSelection, computerPlay()));
+//     }
+//   }
 
-  if ((playerValue + 1) % 3 === computerValue) {
-    computerScore++;
-    return `You Lose, ${MOVES[computerValue]} > ${MOVES[playerValue]}!`;
-  } else if (playerValue === computerValue) {
-    return `It's a Tie - ${MOVES[playerValue]} vs ${MOVES[computerValue]}`;
-  } else {
-    playerScore++;
-    return `You win, ${MOVES[playerValue]} > ${MOVES[computerValue]}`;
-  }
-}
+//   printWinner();
+// }
 
-function printWinner() {
-  if (playerScore > computerScore) {
-    console.log(`You won, scoring ${playerScore} to ${computerScore}!`);
-  } else if (playerScore < computerScore) {
-    console.log(`Computer won, scoring ${computerScore} to ${playerScore}!`);
-  } else {
-    console.log(`It's a tie! ${computerScore} to ${playerScore}!`);
-  }
-}
+// function inputValidation(string) {
+//   if (
+//     string === null ||
+//     !(
+//       string.toLowerCase() === 'rock' ||
+//       string.toLowerCase() === 'paper' ||
+//       string.toLowerCase() === 'scissors'
+//     )
+//   ) {
+//     alert('Please enter rock / paper / scissors');
+//     return false;
+//   } else {
+//     return true;
+//   }
+// }
+
+// // Determine the round winner using modulo function,
+// // more info in README.md
+// function playRound(playerSelection, computerValue) {
+//   let playerValue = MOVES.indexOf(playerSelection.toLowerCase());
+
+//   if ((playerValue + 1) % 3 === computerValue) {
+//     computerScore++;
+//     return `You Lose, ${MOVES[computerValue]} > ${MOVES[playerValue]}!`;
+//   } else if (playerValue === computerValue) {
+//     return `It's a Tie - ${MOVES[playerValue]} vs ${MOVES[computerValue]}`;
+//   } else {
+//     playerScore++;
+//     return `You win, ${MOVES[playerValue]} > ${MOVES[computerValue]}`;
+//   }
+// }
+
+// function printWinner() {
+//   if (playerScore > computerScore) {
+//     console.log(`You won, scoring ${playerScore} to ${computerScore}!`);
+//   } else if (playerScore < computerScore) {
+//     console.log(`Computer won, scoring ${computerScore} to ${playerScore}!`);
+//   } else {
+//     console.log(`It's a tie! ${computerScore} to ${playerScore}!`);
+//   }
+// }
