@@ -6,15 +6,26 @@ const rpsMoves = document.getElementById('moves');
 const movesArray = Array.from(rpsMoves.children);
 
 rpsMoves.addEventListener('click', (e) => {
-  if (e.target.closest('BUTTON')) playerSelection(e.target.closest('BUTTON'));
+  if (e.target.closest('BUTTON'))
+    playRound(playerSelection(e.target.closest('BUTTON')), computerSelection());
 });
 
 function playerSelection(rpsButton) {
-  playerChoice = movesArray.indexOf(rpsButton);
+  return movesArray.indexOf(rpsButton);
 }
 
 function computerSelection() {
   return Math.floor(Math.random() * 5);
+}
+
+function playRound(playerSelection, computerSelection) {
+  console.log('player: ' + movesArray[playerSelection].textContent);
+  console.log('computer: ' + movesArray[computerSelection].textContent);
+
+  if (playerSelection === computerSelection) console.log("It's a tie!");
+  else if (((playerSelection - computerSelection + 5) % 5) % 2 === 1)
+    console.log('Player Wins');
+  else console.log('Computer Wins');
 }
 // game();
 
