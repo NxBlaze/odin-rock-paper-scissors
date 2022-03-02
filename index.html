@@ -4,9 +4,59 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Let's play Rock - Paper - Scissors</title>
+    <title>Rock - Paper - Scissors - Spock - Lizard</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="./js/javascript.js" defer></script>
   </head>
   <body>
-    <script src="./js/javascript.js"></script>
+    <header>
+      <h1>Rock Paper Scissors Spock Lizard</h1>
+    </header>
+
+    <main>
+      <aside id="rules">
+        <button id="btn-rules">Show Rules</button>
+        <p>
+          Rock Paper Scissors Spock Lizard is a game invented by Sam Kass and
+          Karen Bryla as an improvement for the classic Rock Paper Scissors.
+        </p>
+
+        <p>
+          According to Kass, 75-80% of any Rock Paper Scissors games you play
+          with a person you know will end up as a draw. With his variation that
+          probability is greatly reduced.
+        </p>
+        <h2>Rules</h2>
+        <p>The rules of Rock Paper Scissors Spock Lizard are quite simple:</p>
+        <ul>
+          <li>Scissors cuts Paper</li>
+          <li>Paper covers Rock</li>
+          <li>Rock crushes Lizard</li>
+          <li>Lizard poisons Spock</li>
+          <li>Spock smashes Scissors</li>
+          <li>Scissors decapitates Lizard</li>
+          <li>Lizard eats Paper</li>
+          <li>Paper disproves Spock</li>
+          <li>Spock vaporizes Rock</li>
+          <li>And as it always has, Rock crushes Scissors</li>
+        </ul>
+      </aside>
+
+      <section id="game">
+        <div id="score">1 - 1</div>
+        <div id="log">Spock vaporizes Rock</div>
+        <div id="moves">
+          <button><img src="img/rock.svg" alt="rock" />ROCK</button>
+          <button><img src="img/paper.svg" alt="paper.svg" />PAPER</button>
+          <button>
+            <img src="img/scissors.svg" alt="scissors.svg" />SCISSORS
+          </button>
+          <button><img src="img/spock.svg" alt="spock.svg" />SPOCK</button>
+          <button><img src="img/lizard.svg" alt="lizard" />LIZARD</button>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
   </body>
 </html>
