@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
-  justify-content: space-between;
   background-color: #282936;
   margin: 0;
   font-size: 16px;
@@ -11,9 +10,10 @@ header {
   align-items: center;
   height: 100px;
   background-color: #33333350;
+  margin: 0;
 }
 h1,
-button,
+#moves button,
 #score p,
 #game-stage > * {
   background: #c42afc;
@@ -30,27 +30,41 @@ button,
   font-family: 'Press Start 2P', cursive;
 }
 main {
+  height: calc(100vh - 120px);
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 #rules {
   margin: 0;
-  max-width: 300px;
-  height: 100vh;
+  width: 300px;
+  height: 100%;
   flex: 1;
-  background-color: lightsteelblue;
+  height: 100%;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8em;
+  padding: 10px;
+  line-height: 1.4;
 }
-#rules button {
+#rules h2 {
+  color: #1fbffc;
+}
+#btn-rules {
+  font-family: 'Press Start 2P', cursive;
   position: absolute;
-  left: 225px;
-  top: 500px;
-  transform: rotate(270deg);
+  left: -80px;
+  top: 160px;
   width: 200px;
   height: 50px;
   margin: 0;
+  transform: rotate(270deg);
+  background-color: transparent;
+  color: #1fbffc;
   border: none;
-  border-radius: 0;
+}
+#btn-rules:hover {
+  color: #c42afc;
 }
 #game {
   flex: 1;
@@ -60,7 +74,6 @@ main {
   justify-content: space-around;
   display: flex;
 }
-
 #score p {
   text-align: center;
   line-height: 2em;
@@ -72,7 +85,7 @@ main {
   justify-content: space-around;
   align-items: center;
   font-size: 2em;
-  background-color: rgba(49, 49, 77, 0.164);
+  background-color: #31314d2a;
 }
 #game-stage .move {
   display: flex;
@@ -104,7 +117,7 @@ main {
 }
 #moves {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   gap: 20px;
 }
