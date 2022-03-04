@@ -2,6 +2,21 @@ let playerChoice;
 let computerScore = 0;
 let playerScore = 0;
 
+// Canned log messages,
+// First key digit is winning choice, second - losing choice
+const RESULTS = {
+  '0-2': 'As it always has, Rock crushes Scissors',
+  '0-4': 'Rock crushes Lizard',
+  '1-0': 'Paper covers Rock',
+  '1-3': 'Paper disproves Spock',
+  '2-1': 'Scissors cut Paper',
+  '2-4': 'Scissors decapitate Lizard',
+  '3-0': 'Spock vaporizes Rock',
+  '3-2': 'Spock smashes Scissors',
+  '4-1': 'Lizard eats Paper',
+  '4-3': 'Lizard poisons Spock',
+};
+
 const rpsMoves = document.getElementById('moves');
 const movesArray = Array.from(rpsMoves.children);
 
@@ -19,21 +34,13 @@ function computerSelection() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  console.log('player: ' + movesArray[playerSelection].textContent);
-  console.log('computer: ' + movesArray[computerSelection].textContent);
-
   gameStage(playerSelection, computerSelection);
-  displayScore();
 
-  if (playerSelection === computerSelection) console.log("It's a tie!");
-  else if (((playerSelection - computerSelection + 5) % 5) % 2 === 1) {
-    console.log('Player Wins');
-    playerScore++;
-  } else {
-    console.log('Computer Wins');
-    computerScore++;
-  }
+  getResult(playerSelection, computerSelection);
+
+  displayScore();
 }
+
 function displayScore() {
   let playerTotal = document.getElementById('player-score');
   let computerTotal = document.getElementById('computer-score');
@@ -46,6 +53,30 @@ function gameStage(playerSelection, computerSelection) {
   let stage = document.getElementById('game-stage');
 
   stage.innerHTML = `<div class="move">${movesArray[playerSelection].innerHTML}</div><p>VS</p><div class="move">${movesArray[computerSelection].innerHTML}</div>`;
+}
+
+function getResult(playerSelection, computerSelection) {
+  let gameLog = document.getElementById('log');
+  let winner = gameLog.children[0];
+  let result = gameLog.children[1];
+
+  if (playerSelection === computerSelection) {
+    winner.style.color = '#1fbffc';
+    winner.textContent = "It's a Tie!";
+    result.innerHTML = '&nbsp;';
+  } else if (((playerSelection - computerSelection + 5) % 5) % 2 === 1) {
+    winner.style.color = '#0F0';
+    result.style.color = '#0F0';
+    winner.textContent = 'Player Wins!';
+    result.textContent = RESULTS[`${playerSelection}-${computerSelection}`];
+    playerScore++;
+  } else {
+    winner.style.color = '#F00';
+    result.style.color = '#F00';
+    winner.textContent = 'Computer Wins!';
+    result.textContent = RESULTS[`${computerSelection}-${playerSelection}`];
+    computerScore++;
+  }
 }
 // game();
 
