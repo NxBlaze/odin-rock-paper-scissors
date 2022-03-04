@@ -22,10 +22,30 @@ function playRound(playerSelection, computerSelection) {
   console.log('player: ' + movesArray[playerSelection].textContent);
   console.log('computer: ' + movesArray[computerSelection].textContent);
 
+  gameStage(playerSelection, computerSelection);
+  displayScore();
+
   if (playerSelection === computerSelection) console.log("It's a tie!");
-  else if (((playerSelection - computerSelection + 5) % 5) % 2 === 1)
+  else if (((playerSelection - computerSelection + 5) % 5) % 2 === 1) {
     console.log('Player Wins');
-  else console.log('Computer Wins');
+    playerScore++;
+  } else {
+    console.log('Computer Wins');
+    computerScore++;
+  }
+}
+function displayScore() {
+  let playerTotal = document.getElementById('player-score');
+  let computerTotal = document.getElementById('computer-score');
+
+  playerTotal.innerHTML = `<p>PLAYER:<br>${playerScore}</p>`;
+  computerTotal.innerHTML = `<p>COMPUTER:<br>${computerScore}</p>`;
+}
+// Display current round's selections
+function gameStage(playerSelection, computerSelection) {
+  let stage = document.getElementById('game-stage');
+
+  stage.innerHTML = `<div class="move">${movesArray[playerSelection].innerHTML}</div><p>VS</p><div class="move">${movesArray[computerSelection].innerHTML}</div>`;
 }
 // game();
 
