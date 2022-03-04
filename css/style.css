@@ -1,12 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
   justify-content: space-between;
-  background-color: lightslategrey;
+  background-color: #282936;
   margin: 0;
+  font-size: 16px;
 }
 header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 100px;
+  background-color: #33333350;
+}
+h1,
+button,
+#game p,
+#log,
+#game-stage > * {
+  background: #c42afc;
+  background: -webkit-radial-gradient(
+    circle,
+    #c42afc 0%,
+    #1fbffc 50%,
+    #905cfc 100%
+  );
+  background: radial-gradient(circle, #c42afc 0%, #1fbffc 50%, #905cfc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Press Start 2P', cursive;
 }
 main {
   width: 100%;
@@ -34,16 +55,44 @@ main {
 #game {
   flex: 1;
 }
-#game button {
-  min-width: 150px;
-  min-height: 150px;
-  border: none;
-  background-color: cornflowerblue;
-  border-radius: 10px;
-}
-#game div {
+#score,
+#log {
+  font-size: 2em;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+#score p {
+  text-align: center;
+  line-height: 2em;
+}
+#log {
+  font-size: 1.5em;
+  margin: 40px 0;
+}
+#game-stage {
+  min-height: 300px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2em;
+  background-color: rgba(49, 49, 77, 0.164);
+}
+#game-stage .move {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#game-stage img {
+  width: 250px;
+}
+#game button {
+  width: 150px;
+  height: auto;
+  border: none;
+  background-color: #333;
+  border-radius: 10px;
+  font-size: 1.1em;
 }
 #moves {
   display: flex;
