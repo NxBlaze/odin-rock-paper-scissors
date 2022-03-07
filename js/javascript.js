@@ -1,5 +1,6 @@
-let computerScore = 0;
-let playerScore = 0;
+const stage = document.getElementById('game-stage');
+const gameLog = document.getElementById('log');
+const gameOver = new AbortController();
 
 // Canned log messages,
 // First key digit is winning choice, second - losing choice
@@ -19,14 +20,27 @@ const RESULTS = {
 const rpsMoves = document.getElementById('moves');
 const movesArray = Array.from(rpsMoves.children);
 
-rpsMoves.addEventListener('click', (e) => {
-  if (e.target.closest('BUTTON'))
-    playRound(playerSelection(e.target.closest('BUTTON')), computerSelection());
-});
+let computerScore = 0;
+let playerScore = 0;
+
+// -- Main function --
+rpsMoves.addEventListener(
+  'click',
+  (e) => {
+    if (e.target.closest('BUTTON')) {
+      playRound(
+        playerSelection(e.target.closest('BUTTON')),
+        computerSelection()
+      );
+    }
+  },
+  { signal: gameOver.signal }
+);
 
 const rulesButton = document.getElementById('btn-rules');
 rulesButton.addEventListener('click', (e) => toggleRules());
 
+// -- Function Definitions --
 function playerSelection(rpsButton) {
   return movesArray.indexOf(rpsButton);
 }
@@ -37,10 +51,17 @@ function computerSelection() {
 
 function playRound(playerSelection, computerSelection) {
   gameStage(playerSelection, computerSelection);
-
   getResult(playerSelection, computerSelection);
-
   displayScore();
+
+  if (playerScore === 5) {
+    printWinner('Player');
+    gameOver.abort();
+  } else if (computerScore === 5) {
+    printWinner('Computer');
+    gameOver.abort();
+    //clearStage(stage);
+  }
 }
 
 function displayScore() {
@@ -53,13 +74,11 @@ function displayScore() {
 
 // Display current round's selections
 function gameStage(playerSelection, computerSelection) {
-  let stage = document.getElementById('game-stage');
-
   stage.innerHTML = `<div class="move">${movesArray[playerSelection].innerHTML}</div><p>VS</p><div class="move">${movesArray[computerSelection].innerHTML}</div>`;
 }
 
+// Determine winner, print the result and update score
 function getResult(playerSelection, computerSelection) {
-  let gameLog = document.getElementById('log');
   let winner = gameLog.children[0];
   let result = gameLog.children[1];
 
@@ -82,6 +101,24 @@ function getResult(playerSelection, computerSelection) {
   }
 }
 
+function printWinner(winner) {
+  stage.innerHTML = `<p>${winner} won!</p>`;
+  gameLog.innerHTML = '';
+  rpsMoves.removeEventListener('click', (e) => inputListener(e));
+  clearStage();
+}
+
+function clearStage() {
+  const resetBtn = document.createElement('button');
+
+  resetBtn.textContent = 'Play Again!';
+  resetBtn.addEventListener('click', (e) => {
+    if (e.target.closest('BUTTON')) location.reload();
+  });
+  gameLog.appendChild(resetBtn);
+}
+
+// Toggle sidepanel
 function toggleRules() {
   let rules = document.getElementById('rules');
   if (rules.style.display !== 'none') {
