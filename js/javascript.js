@@ -56,11 +56,12 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerScore === 5) {
     printWinner('Player');
+    clearStage();
     gameOver.abort();
   } else if (computerScore === 5) {
     printWinner('Computer');
+    clearStage();
     gameOver.abort();
-    //clearStage(stage);
   }
 }
 
@@ -78,6 +79,7 @@ function gameStage(playerSelection, computerSelection) {
 }
 
 // Determine winner, print the result and update score
+// More info on victory algorithm in readme
 function getResult(playerSelection, computerSelection) {
   let winner = gameLog.children[0];
   let result = gameLog.children[1];
@@ -103,15 +105,14 @@ function getResult(playerSelection, computerSelection) {
 
 function printWinner(winner) {
   stage.innerHTML = `<p>${winner} won!</p>`;
-  gameLog.innerHTML = '';
-  rpsMoves.innerHTML = '';
-  rpsMoves.removeEventListener('click', (e) => inputListener(e));
-  clearStage();
 }
 
 function clearStage() {
-  const resetBtn = document.createElement('button');
+  gameLog.innerHTML = '';
+  rpsMoves.innerHTML = '';
+  rpsMoves.removeEventListener('click', (e) => inputListener(e));
 
+  const resetBtn = document.createElement('button');
   resetBtn.textContent = 'Play Again!';
   resetBtn.addEventListener('click', (e) => {
     if (e.target.closest('BUTTON')) location.reload();
@@ -127,7 +128,6 @@ function toggleRules() {
     rulesButton.style.left = '-80px';
     rulesButton.textContent = 'Show Rules';
   } else {
-    1;
     rules.style.display = '';
     rulesButton.style.left = '230px';
     rulesButton.textContent = 'Hide Rules';
