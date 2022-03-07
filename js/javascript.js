@@ -104,6 +104,7 @@ function getResult(playerSelection, computerSelection) {
 function printWinner(winner) {
   stage.innerHTML = `<p>${winner} won!</p>`;
   gameLog.innerHTML = '';
+  rpsMoves.innerHTML = '';
   rpsMoves.removeEventListener('click', (e) => inputListener(e));
   clearStage();
 }
