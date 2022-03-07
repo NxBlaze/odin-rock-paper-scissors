@@ -129,7 +129,7 @@ function toggleRules() {
     rulesButton.textContent = 'Show Rules';
   } else {
     rules.style.display = '';
-    rulesButton.style.left = '230px';
+    rulesButton.style.left = '240px';
     rulesButton.textContent = 'Hide Rules';
   }
 }

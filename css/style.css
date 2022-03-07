@@ -3,6 +3,9 @@
   font-family: 'Press Start 2P', sans-serif;
 }
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: #282936;
   margin: 0;
   font-size: 16px;
@@ -30,21 +33,22 @@ h1,
   -webkit-text-fill-color: transparent;
 }
 main {
-  height: calc(100vh - 120px);
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 #rules {
+  position: absolute;
   margin: 0;
   width: 300px;
-  height: 100%;
+  height: auto;
   flex: 1;
-  height: 100%;
   color: #fff;
   font-size: 0.8em;
   padding: 10px;
   line-height: 1.4;
+  background-color: #31314d;
 }
 #rules h2 {
   color: #1fbffc;
@@ -52,14 +56,14 @@ main {
 #btn-rules {
   position: absolute;
   left: -80px;
-  top: 160px;
+  top: 155px;
   width: 200px;
   height: 50px;
   margin: 0;
   transform: rotate(270deg);
-  background-color: transparent;
   color: #1fbffc;
   border: none;
+  background-color: #31314d;
 }
 #btn-rules:hover {
   color: #c42afc;
@@ -69,7 +73,8 @@ main {
 }
 #score {
   font-size: 2em;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 250px;
   display: flex;
 }
 #score p {
@@ -80,7 +85,8 @@ main {
   height: 300px;
   max-width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 100px;
   align-items: center;
   font-size: 2em;
   background-color: #31314d2a;
@@ -131,7 +137,8 @@ main {
 }
 #moves {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 50px;
   align-items: center;
   height: 20vh;
 }
@@ -140,6 +147,7 @@ main {
   flex-direction: column;
   align-items: center;
   width: 150px;
+  max-width: 20%;
   height: auto;
   border: none;
   background-color: #282936;
@@ -153,4 +161,28 @@ main {
 }
 #moves button:hover {
   transform: scale(1.25);
+}
+@media screen and (max-width: 1500px) {
+  h1 {
+    font-size: 1.3em;
+  }
+  header {
+    height: 45px;
+  }
+  #score {
+    font-size: 1.2em;
+  }
+  #score p {
+    line-height: 1.1em;
+  }
+  #game-stage {
+    height: 180px;
+    font-size: 1em;
+  }
+  #game-stage img {
+    height: 120px;
+  }
+  #moves button {
+    width: 80px;
+  }
 }
