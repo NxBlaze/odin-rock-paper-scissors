@@ -13,7 +13,6 @@ header {
   margin: 0;
 }
 h1,
-#moves button,
 #score p,
 #game-stage > * {
   background: #c42afc;
@@ -112,26 +111,43 @@ main {
 #log button {
   padding: 10px 40px;
   border: double 3px transparent;
-  border-radius: 80px;
+  border-radius: 50px;
   background: linear-gradient(#282936, #282936),
-    radial-gradient(circle at top left, #016eda, #d900c0);
+    radial-gradient(circle at top left, #1fbffc, #d900c0);
   background-origin: border-box;
   background-clip: padding-box, border-box;
   font-family: 'Press Start 2P', cursive;
   font-size: 1.2em;
   color: #1fbffc;
+  transition: all 0.3s;
+}
+#log button:hover {
+  background: linear-gradient(90deg, #1fbffc, #d900c0),
+    radial-gradient(circle at top left, #1fbffc, #d900c0);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  color: #282936;
 }
 #moves {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 20px;
+  min-height: 20vh;
 }
 #moves button {
   width: 150px;
   height: auto;
   border: none;
-  background-color: #333;
+  background-color: #282936;
   border-radius: 10px;
   font-size: 1.1em;
+  font-family: 'Press Start 2P', cursive;
+  color: #1fbffc;
+  transition: all 0.3s ease-in-out;
+}
+#moves button:hover {
+  width: 200px;
+  height: auto;
+  font-size: 1.4em;
 }
