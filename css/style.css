@@ -163,6 +163,7 @@ main {
 #moves button:hover {
   transform: scale(1.25);
 }
+
 @media screen and (max-width: 1500px) {
   h1 {
     font-size: 1.3em;

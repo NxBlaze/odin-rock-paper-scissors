@@ -55,13 +55,11 @@ function playRound(playerSelection, computerSelection) {
   displayScore();
 
   if (playerScore === 5) {
+    gameOver.abort();
     printWinner('Player');
-    clearStage();
-    gameOver.abort();
   } else if (computerScore === 5) {
-    printWinner('Computer');
-    clearStage();
     gameOver.abort();
+    printWinner('Computer');
   }
 }
 
@@ -104,13 +102,29 @@ function getResult(playerSelection, computerSelection) {
 }
 
 function printWinner(winner) {
-  stage.innerHTML = `<p>${winner} won!</p>`;
+  loadingAnimation();
+
+  setTimeout(() => {
+    stage.innerHTML = `<p>${winner} won!</p>`;
+    clearStage();
+  }, 1500);
+}
+
+function loadingAnimation() {
+  dominoes = document.createElement('div');
+  dominoes.classList.add('dominoes');
+
+  for (let i = 0; i < 5; i++) {
+    let tempDiv = document.createElement('div');
+    dominoes.appendChild(tempDiv);
+  }
+  rpsMoves.innerHTML = '';
+  rpsMoves.appendChild(dominoes);
 }
 
 function clearStage() {
-  gameLog.innerHTML = '';
   rpsMoves.innerHTML = '';
-  rpsMoves.removeEventListener('click', (e) => inputListener(e));
+  gameLog.innerHTML = '';
 
   const resetBtn = document.createElement('button');
   resetBtn.textContent = 'Play Again!';

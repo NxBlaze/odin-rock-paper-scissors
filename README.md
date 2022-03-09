@@ -119,3 +119,4 @@ Then we just upgrade our victory check to show them:
 - Algorithm by [JL Popyack](https://www.cs.drexel.edu/~jpopyack/Courses/CSP/Fa17/notes/CS140_RockPaperScissors_Revisited.pdf)
 - The font is [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) via Google Fonts
 - Icons made with [Fontawesome](https://fontawesome.com)
+- Loading animation - dominoes from [Whirl](https://whirl.netlify.app)
