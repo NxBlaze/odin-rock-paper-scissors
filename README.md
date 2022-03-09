@@ -38,7 +38,7 @@ When we map all possible results (row headers being 'our' player's choice) in a 
 | **3** | :heavy_check_mark: |        :x:         | :heavy_check_mark: | :heavy_minus_sign: |        :x:         |
 | **4** |        :x:         | :heavy_check_mark: |        :x:         | :heavy_check_mark: | :heavy_minus_sign: |
 
-Now, if we difference between player's choices we can se 'our' player wins if result is positive **and** odd or negative **and** even.
+Now, if we get the difference between player's choices we can se 'our' player wins if result is positive **and** odd or negative **and** even.
 
     player1 - player2
 
@@ -50,7 +50,7 @@ Now, if we difference between player's choices we can se 'our' player wins if re
 | **3** | :heavy_check_mark: 3 |        :x: 2         | :heavy_check_mark: 1  |  :heavy_minus_sign:   |        :x: -1         |
 | **4** |        :x: 4         | :heavy_check_mark: 3 |         :x: 2         | :heavy_check_mark: 1  |  :heavy_minus_sign:   |
 
-Now we can be tricky, and add 5 (number of figures), to turn all the negative numbers to positive ones. -1 becomes 4 (still losing, according to the table above), -2 becomes 3 (winning) and so on. Problem is, number in the lower left half of our table went out of whack now - player1 is now winning on even numbers there, rather than odd.
+We can be tricky, and add 5 (number of figures in the game), to turn all the negative numbers to positive ones. -1 becomes 4 (still losing, according to the table above), -2 becomes 3 (winning) and so on. Problem is, numbers in the lower left half of our table went out of whack now - player1 is now winning on even numbers there, rather than odd.
 
     (player1 - player2) + 5
 
